@@ -1,0 +1,118 @@
+Problem 1:
+
+I implemented the LRU cache using OrderedDict hash map which is useful for executing methods at constant time, but it is also useful for this problem because it adds new key:value pairs in order.
+The LRU Cache works as a Doubly linkedList because of the OrderedDict which not only tracks the nodes, but also the position of next nodes.
+
+Get function - finds the key in the node.
+If not present, it returns the value -1.
+If present, it deletes the key:value, and it inserts it again on top with OrderedDict
+
+Set Function - Inserts key:value in the node.
+If there is not enough capacity in the Cache, don't do anything.
+Uses the Get function. If the key:value is present, add it again to the cache again. (it is added on top - OrderedDict)
+If there is capacity, increase current values in cache by 1.
+If the cache is full, drop last key:value, and add key:value.
+
+Time complexity:
+O(1) - Since the cache is implemented using a DoublyLinked List die to the OrderedDict Hashmap,
+Retrieval (get), Insertion (set), and deletion (pop, popitem) can be executed at constant time.
+
+Space complexity:
+O(k) - where k is the capacity given at the cache.
+
+
+Problem 2:
+
+I first use a list that contains the paths of all files to be returned.
+I then iterate over each item in the current path. If the item is a directory, I use recursion on that directory.
+If the item is the file I'm looking for, then I append it to the list.
+
+Time complexity:
+O(f x d) - Since I'm using recursion, the time complexity depends on the number of f and d(files and directories).
+
+Space complexity:
+O(r x d) - space complexity depends on r (the number of recursions returned), and d (the depth of the tree recursion)
+
+
+Problem 3:
+
+For Huffman Coding I use the Min-heap algorithm which uses binary trees, where root keys are smaller than the leafs children.
+
+Time complexity:
+Encode: O(n*logn)
+O(n) - I first make a dictionary of frequencies of characters in a text. Loop over characters.
+O(n) - Add each item in the dictionary of frequencies into the Min Heapq
+O(logn) - when merging the heaps, we use heappush and heappop. They are both methods on the binary tree.
+O(n) - also for making the code and for encoding the text.
+Decode:
+O(n) - There is an iteration over each character in the encoded text
+
+Space Complexity
+Encode:
+O(n) - Space complexity is dependent on the size of the string of words.
+Decode:
+O(1) - It is constant because the space used is only one variable returned for the decoded text
+
+Problem 4:
+
+In this problem I am iterating over each user in the group, and within each group inside groups.
+Recursion algorithm is used in the case that the user is not in the group, but there are groups within groups.
+
+Time complexity:
+O(u * g), where
+u = n. of users
+g = n. of groups
+
+Space complexity:
+O(1), complexity is dependent on the number of returns, variables taking space.
+The function only returns one result T/F.
+
+
+Problem 5:
+
+For this problem I have two classes
+1) Block with hash code, datestamp, and data
+2) LinkedList Class that builds the blockchain using the append function.
+
+Time complexity:
+O(1) - The time complexity for appending a block to the end of the block is constant because the blockchain works the same way as a LinkedList.
+O(n) - The complexity for the printing function is linear because we iterate through each node.
+
+Space complexity:
+O(n) - Each block added to the blockchain occupies 1 space.
+So the space complexity is O(n * b) where b = number of blocks appended.
+
+
+Problem 6:
+
+I start the problem with two lists. I want to find the union and intersection of items from the two lists.
+I create two functions: Union and Intersection, along with a LinkedList with the append method.
+The LinkedList serves to keep track of unions and intersections.
+
+Union:
+For Union, I use a set container which keeps track of each item in one list. It then keeps track of items from the other list.
+The set only contains unique values, so it accounts for all different items from each of the two lists.
+Each item from the list is then appended to the LinkedList.
+
+Intersection:
+For intersection, I used a dictionary container which keeps track of items present in the first list. Each item is added to the dictionary as a Key and given 0 value.
+For the next list, if the item is present in the dictionary, it is added to the LinkedList only for the first time that it appears in the second List.
+(To keep track of this, I only append items to the LinkedList if the value from the item is 0.
+
+Time complexity:
+
+O(n)
+
+The items in each list are first appended to two inkedLists
+
+Union:
+O(n) - The function has for loops and goes through each node of each LinkedList to see if it has value. It then checks if it is in the set O(1).
+It further adds the item to another LinkedList O(1).
+
+Intersection:
+O(n) - There is also a for loop for each node in the LinkedList, and checking for keys in the dictionary O(1).
+
+Space Complexity:
+
+O(n) - There is a space complexity because each item in each list occupies one space in either the LinkedList or the dictionary or set.
+It is actually O(n * m) where n is the number of items in list1, and m are items in list2.

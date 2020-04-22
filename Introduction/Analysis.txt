@@ -1,0 +1,26 @@
+Analysis of Order, time complexity
+
+Task0:
+
+O(1) - Constant because I am making direct calls by index for each of the 6 calls.
+
+Task1:
+
+O(n + 6) = O(n) - Linear Relationship because there are 2 for loops with 4 operations inside the for loops.
+                   Set instead of for loop allows me to have only a single loop for each data list
+
+Task2:
+
+O(n) - Linear. There is a for loop (the for loop contains lines having constant time complexity when looking for the keys in the dictionary)
+ and an internal function(max).
+
+Task3:
+
+O(n + nlogn) = O(nlogn) - O(n) due to for loops. O(nlogn) due to sorted() function.
+
+Task4:
+
+O(nlogn + n^2) - modifications of items O(1)
+            There are for loops O(n), but there is a for loop that is a nested for loop. The for loop has another loop if, that verified that the call is not in the other sets.
+            nested loop - O(n^2)
+            sorted() - function O(nlogn)
